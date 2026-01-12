@@ -8,20 +8,21 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Install build tools
       run: sudo apt-get update && sudo apt-get install -y build-essential
+
     - name: Build
       run: |
         g++ -std=c++17 bill_maker.cpp -o bill_maker
-    - name: Run bill maker (non-interactive) 
-      run: | 
-        printf "January\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\nN\nN\nN\n" | ./bill_maker || true
-   
-    - name: Run (smoke test)
+
+    - name: Run bill maker (non-interactive)
       run: |
-        ./bill_maker || true
+        # One-day non-interactive run:
+        # month, days, 12 item quantities, Day continue? (N), edit? (N), another month? (N)
+        printf "January\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\nN\nN\nN\n" | ./bill_maker || true
