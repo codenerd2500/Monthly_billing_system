@@ -18,6 +18,10 @@ jobs:
     - name: Build
       run: |
         g++ -std=c++17 bill_maker.cpp -o bill_maker
+    - name: Run bill maker (non-interactive) 
+      run: | 
+        cat <<'EOF' | ./bill_maker || true January 30 N N EOF
+
     - name: Run (smoke test)
       run: |
         ./bill_maker || true
