@@ -96,7 +96,7 @@ GUI or Web version
 
 ### 1️⃣ Compile
 ```bash
-g++ billing_system.cpp -o billing
+g++ bill_maker.cpp -o bill_maker
 
-./billing
+./bill_maker
 
