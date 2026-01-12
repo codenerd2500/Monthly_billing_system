@@ -61,17 +61,15 @@ void editQuantities(vector<item>& composition) {
 }
 
 int main(){
-    //defining contents in vector dynamic array (template, quantities reset per month)
     vector<item> composition = {
-        {"Manager coat", 75.0 , 0 },{"Manager pant", 10.0 , 0 },{"Manager shirt", 10.0 , 0 },
-        {"Blackpant", 10.0 , 0 },{"Chef coat", 10.0 , 0 },{"Chef apron", 4.0 , 0 },
-        {"Wrapping sheet", 4.0 , 0 },{"Ut shirt", 6.0 , 0 },{"Jeans pant", 10.0 , 0 },
-        {"t-shirt", 6.0 , 0 },{"Blue shirt", 10.0 , 0 },{"Chef pant", 10.0 , 0 }
+        {"Item1", 0 , 0 },{"Item2", 0 , 0 },{"Item3", 0 , 0 },
+        {"Item4", 0.0 , 0 },{"Item5", 0 , 0 },{"Item6", 0 , 0 },
+        {"Item7", 0 , 0 },{"Item8", 0 , 0 },{"Item9", 0 , 0 },
+        {"Item10", 0 , 0 },{"Item11", 0 , 0 },{"Item12", 0 , 0 }
     };
 
     char anotherMonth = 'Y';
     while(anotherMonth == 'Y' || anotherMonth == 'y') {
-        // reset quantities for new month
         for(auto &it : composition) it.qty = 0;
 
         string month;
@@ -81,7 +79,6 @@ int main(){
         cout<<"Enter days in billing month: "<<endl;
         cin>>days;
 
-        //nested loop to dispay month with days
         for(int d= 1;d<=days;d++){
             cout<<"\n-----------------"<<d<<" "<<month<<" record -----------------"<<endl;
 
@@ -107,7 +104,7 @@ int main(){
         cout<<left<<setw(20)<<"Item"<<setw(15)<<"Qty"<<"Sub_total"<<endl;
         cout<<string(50,'-')<<endl;
 
-        //const auto&item:composition to read from vector
+        
         for(const auto&item:composition){
             if(item.qty>0){
                 double sub=item.qty*item.price;
@@ -119,14 +116,14 @@ int main(){
         cout<<"Grand total revenue: rs."<<Grand_total<<endl;
         cout<<string(50,'=')<<endl;
         
-        // Edit quantities before export
+       
         char editChoice;
         cout << "\nDo you want to edit any quantities? (Y/N): ";
         cin >> editChoice;
         if(editChoice == 'Y' || editChoice == 'y') {
             editQuantities(composition);
             
-            // Recalculate grand total
+           
             Grand_total = 0;
             cout << "\n\n" << string(50,'=') << endl;
             cout << "Updated bill for " << month << endl;
@@ -154,5 +151,6 @@ int main(){
     return 0;
 
 }
+
 
 
