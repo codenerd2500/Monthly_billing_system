@@ -19,8 +19,8 @@ jobs:
       run: |
         g++ -std=c++17 bill_maker.cpp -o bill_maker
     - name: Run bill maker (non-interactive) 
-      run: |
-        printf "January\n30\nN\nN\n" | ./bill_maker || true
+      run: | 
+        printf "January\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\nN\nN\nN\n" | ./bill_maker || true
    
     - name: Run (smoke test)
       run: |
