@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Bill Maker</h1>
+            <p>Generate monthly bills with ease.</p>
+        </header>
+
+        <section class="controls">
+            <div class="setup-panel" id="setup-panel">
+                <div class="input-group">
+                    <label for="billing-month">Billing Month</label>
+                    <input type="text" id="billing-month" placeholder="e.g. January 2024" value="January">
+                </div>
+                <div class="input-group">
+                    <label for="total-days">Days in Month</label>
+                    <input type="number" id="total-days" min="1" max="31" value="30">
+                </div>
+                <button id="start-btn" class="btn primary">Start Billing</button>
+            </div>
+
+            <div class="day-panel hidden" id="day-panel">
+                <div class="day-info">
+                    <span class="day-label">Current Day:</span>
+                    <span class="day-value" id="current-day-display">Day 1 of 30</span>
+                </div>
+                <div class="day-actions">
+                    <button id="next-day-btn" class="btn secondary">Next Day</button>
+                    <button id="finish-btn" class="btn primary hidden">Finish Month</button>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-label">Grand Total Revenue</div>
+                <div class="summary-value" id="grand-total">₹0.00</div>
+            </div>
+        </section>
+
+        <section class="billing-table-wrapper">
+            <table id="billing-table">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Rate (₹)</th>
+                        <th class="daily-col">Today's Qty</th>
+                        <th>Total Qty</th>
+                        <th>Subtotal (₹)</th>
+                    </tr>
+                </thead>
+                <tbody id="billing-body">
+                    <!-- Rows will be populated by JS -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="actions">
+            <button id="export-btn" class="btn primary hidden">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Export Final Bill
+            </button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
